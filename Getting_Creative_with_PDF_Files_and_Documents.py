@@ -241,16 +241,16 @@ def generate_payslip(data):
         <tbody>
             <tr>
                 <td>Payments</td>
-                <td align='right'>"""  """"+str(data['payment'])+"""</td>
-                """
+                <td align='right'>"""  """"+str(data['payment'])+</td>
+                
             </tr>
                 
             <tr>
               <td>Tax</td>
-              <td align='right'>"""+str(data['tax'])+""" </td>
+              <td align='right'>"""+#str(data['tax'])+""" </td>
                           
-            </tr>
-            <tr>
+            #</tr>
+            """ <tr>
                 <td>Total</td>
                 <td align='right'>""" """+str(data['total'])+"""  """</td>
             </tr>
@@ -262,9 +262,9 @@ def generate_payslip(data):
     pdf.output('PaySlip_.pdf'%data['id'])
 for emp in employee_data:
     generate_payslip(emp)
-    
+     """
         
- """
+"""
 #encrypt the pdf
 
 from PyPDF2 import PdfWriter,PdfReader
@@ -280,4 +280,10 @@ newfp=open('EncryptedExcercise.pdf','wb')
 writer.write(newfp)
 newfp.close()
 fp.close()
+"""
+print('*'*50,'Reading Word documents', '*'*50)
 
+import docx
+
+doc= docx.Document('SergioAndrésHerrera Velásquez_Anexo_guia_aap1')
+print('Document Object:',doc)
