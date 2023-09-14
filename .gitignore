@@ -85,6 +85,7 @@ target/
 # IPython
 profile_default/
 ipython_config.py
+#
 
 # pyenv
 #   For a library or package, you might want to ignore these files since the code is
@@ -172,5 +173,13 @@ poetry.toml
 
 # LSP config files
 pyrightconfig.json
+
+
+#files
+.docx
+.pdf
+.xlsx
+.csv
+
 
 # End of https://www.toptal.com/developers/gitignore/api/python
