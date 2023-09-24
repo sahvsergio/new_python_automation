@@ -1,4 +1,5 @@
 import docx
+from docx.shared import Inches
 #opening the file
 doc = docx.Document('SergioAndrésHerrera Velásquez_Anexo_guia_aap1.docx')
 print('Document Object:', doc)
@@ -30,7 +31,33 @@ for i in range(len(table.rows)):
     
 #writing data into  word Document(Adding headings, images,tables)
 from docx import Document
+#document object
 document=Document()
+#adding headings
 document.add_heading('Test Document from Docs',0)
+document.add_heading('Lets talk about python language', level=1 )
+#adding paragraphs
+p= document.add_paragraph('A plai paragraph having some')
+p.add_run('bold words').bold=True#adding style to paragraphs
+p.add_run('and  italics').italic=True
+document.add_paragraph('First lets see the Python logo', style='List Bullet')#adding bulleted lists
+#adding pictures
+document.add_picture('favicon.png', width=Inches(6.25))
+#adding pictures
+table=document.add_table(rows=1,cols=3)
+table.style='Table Grid'
+data={'id':1,'items':'apple','price':50}
+headings=table.rows[0].cells
+headings[0].text='Id'
+headings[1].text='items'
+headings[2].text= 'Price'
+
+row=table.add_row().cells
+row[0].text=str(data.get('id'))
+row[1].text=data.get('items')
+row[2].text=str(data.get('price'))
+
+
+#saving te document
 document.save('testdoc.docx')
     
