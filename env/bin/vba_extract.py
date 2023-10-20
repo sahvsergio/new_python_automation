@@ -1,4 +1,4 @@
-#!/home/sergioherrera/Documents/projects/python_projects/new_python_automation/env/bin/python3
+#!/home/sergioherrera/Documents/projects/python_projects/new_python_automation/env/bin/python
 
 ##############################################################################
 #
