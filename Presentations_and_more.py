@@ -64,7 +64,7 @@ p.text = "This is a paragraph"
  
 prs.save('new_ppt.pptx')
 # Playing with layouts, placeholders, and textboxes
-
+##Adding A two content slide
 from pptx import Presentation
 prs=Presentation()
 two_content_slide_layout=prs.slide_layouts[3]
@@ -87,6 +87,26 @@ p.text='And this is line 3 ...'
 p.level=2
 
 prs.save('two_content.pptx')
+
+
+##adding a textbox
+from pptx import Presentation
+from pptx.util import Inches, Pt
+prs=Presentation()
+blank_slide_layout=prs.slide_layouts[6]
+slide=prs.slides.add_slide(blank_slide_layout)
+
+txBox=slide.shapes.add_textbox(Inches(2),Inches(2),Inches(5),Inches(1))
+tf=txBox.text_frame
+tf.text='Wow, I\'m inside a textbox'
+
+p=tf.add_paragraph()
+p.text='Adding a new text'
+p.font.bold=True
+p.font.italic=True
+p.font.size=Pt(30)
+
+prs.save('Textbox.pptx')
 # Working with different shapes and adding tables
 # Visual treat with pictures and charts
 # Automating weekly sales reports
