@@ -107,6 +107,30 @@ p.font.italic=True
 p.font.size=Pt(30)
 
 prs.save('Textbox.pptx')
+
 # Working with different shapes and adding tables
+
+from pptx import Presentation
+from pptx.enum.shapes import MSO_SHAPE
+from pptx.util import Inches
+from pptx.dml.color import RGBColor
+
+prs=Presentation()
+title_only_slide_layout=prs.slide_layout[5]
+slide=prs.slides.add_slide(title_only_slide_layout)
+shapes=slide.shapes
+shapes.title.text='Adding Shapes'
+
+
+shape1= shapes.add_shape(MSO_SHAPE.RECTANGULAR_CALLOUT,Inches(3.5),Inches(2),Inches(2),Inches(2))
+shape1.fill.solid()
+shape1.fill.fore_color.rgb=RGBColor(0x1E, 0x90, 0xFF)
+shape,fill.fore.color.brightness =)0.4
+
+shape1.text= 'See! There is home !'
+
+shape2= shapes.add_shape(MSO_SHAPE.ACTION_BUTTON_HOME,Inches(3.5),Inches(5),Inches(2),Inches(2))
+shape.text='Home'
+prs.save('shapes.pptx')
 # Visual treat with pictures and charts
 # Automating weekly sales reports
