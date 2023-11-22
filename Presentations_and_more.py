@@ -229,3 +229,53 @@ data_labels.position=XL_LABEL_POSITION.OUTSIDE_END
 
 prs.save('chart.pptx')
 # Automating weekly sales reports
+
+##presentation
+from pptx import Presentation
+##ChartData
+from pptx.chart.data import ChartData
+
+
+#Prepare the charts
+from pptx.enum.chart import XL_CHART_TYPE
+from pptx.enum.chart import XL_LABEL_POSITION,XL_LEGEND_POSITION
+
+from pptx.util import Inches
+from datetime import datetime
+import pandas as pd
+
+xls_file=pd.ExcelFile('Sales_Data.xlsx')
+
+prs=Presentation('Sample_ppt.pptx')
+first_slide=prs.slides[0]
+first_slide.shapes[0].text_frame.paragraphs[0].text='Weekly Sales Report %s'\ % datetime.now().strftime('%D')
+first_slide.placeholders[1].text()="Author:Sergio, sergio@example.com"
+blank_slide_layout=prs.slide_layouts[6]
+slide=prs.slides.add_slide(blank_slide_layout)
+slide.shapes.title.text="% Revenue For Accounts"
+df=xls_file.parse('Sales')
+df['total']=df['Items']*df['UnitPrice']
+plot= df.groupby('Account')['Total'].sum().plot(kind='pie',
+                                                \autopc= %.2f, fontsize=20)
+f=plot.get_figure()
+f.savefig('Result.png',bbox_inches='tight',dpi=400)
+
+
+left=Inches(2.5); top=Inches(3)
+pic=slide.shapes.add_picture('result.png', left, top,height=Inches(4),width=Inches(5))
+
+
+slide=prs.slides.add_slide(prs.slide_layout[6])
+slide.shapes.title.text='Sales Manager Performance'
+df=xls_file.parse('Sales')
+df['total']=df['Items']*df['UnitPrice']
+mgr_data=df.groupby(['Manager'])['total'].sum()
+managers= mgr_data.index.values.tolist()
+sales=[]
+for mgr in managers:
+    sales.append(mgr_data.loc[mgr])
+    
+
+
+
+
