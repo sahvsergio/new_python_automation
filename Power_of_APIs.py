@@ -6,11 +6,12 @@ django (https://www.djangoproject.com/)
 django-rest-hooks (https://github.com/zapier/django-rest-hooks)
 """
 # Designing your own REST APIs
-from flask import Flask, jsonify, make_response, request, abort
+# from flask import Flask, jsonify, make_response, request, abort
 
-app = Flask(__name__)
+# app = Flask(__name__)
 
-users = [
+# users = [
+"""
     {
         'id': 1,
         'username': u'cjgiridhar',
@@ -86,8 +87,6 @@ def delete_user(id):
     return jsonify({}), 204
     
     
-
-
 @app.errorhandler(404)
 def not_found():
     return make_response(jsonify({'error': 'Not found'}), 404)
@@ -95,3 +94,7 @@ def not_found():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+"""
+
+#
